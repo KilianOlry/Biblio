@@ -10,7 +10,33 @@
             th:include="global/header.html">
     </th:block>
 
-    <h1>Hello les gars</h1>
+    <h1 class="text-center text-xl my-10">Nos Livres</h1>
+
+    <div class="container mx-auto flex justify-end">
+        <a class="btn btn-outline">Ajouter</a>
+    </div>
+
+    <div class="overflow-x-auto container mx-auto">
+        <table class="table">
+            <thead>
+            <tr>
+                <th></th>
+                <th class="capitalize">id</th>
+                <th class="capitalize">titre</th>
+                <th class="capitalize">résumé</th>
+                <th class="capitalize">actions</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr th:each="book : ${books}">
+                    <td></td>
+                    <th th:text="${book.id}"></th>
+                    <td th:text="${book.title}"></td>
+                    <td th:text="${book.synopsis}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
 </body>
 </html>
