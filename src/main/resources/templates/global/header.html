@@ -1,16 +1,6 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.19/dist/full.min.css" rel="stylesheet" type="text/css"/>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body>
-
-<div class="navbar bg-base-100 container m-auto">
+<div class="navbar bg-base-100" th:fragment="header">
     <div class="flex-1">
-        <a class="btn btn-ghost text-xl" th:text="BookManager"></a>
+        <a class="btn btn-ghost text-xl" th:href="@{/}">BookManager</a>
     </div>
     <div class="flex-none">
         <ul class="menu menu-horizontal px-1">
@@ -22,7 +12,7 @@
                     <summary>Parent</summary>
                     <ul class="bg-base-100 rounded-t-none p-2">
                         <li>
-                            <a>Link 1</a>
+                            <a th:href="@{/livres}">nos livres</a>
                         </li>
                         <li>
                             <a>Link 2</a>
