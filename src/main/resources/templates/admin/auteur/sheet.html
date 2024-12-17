@@ -1,0 +1,36 @@
+<th:block th:include="/_partials/header.html"></th:block>
+
+<h1 class="text-center alert-info"> Fiche Auteur</h1>
+
+<table class="table">
+    <tbody  th:object="${auteur}">
+        <tr>
+            <th>Id</th>
+            <td th:text="*{id}"></td>
+        </tr>
+        <tr>
+            <th>Nom</th>
+            <td th:text="*{prenom + ' ' + nom}"></td>
+        </tr>
+        <tr>
+            <th>Biographie</th>
+            <td th:text="*{bio}"></td>
+        </tr>
+
+        <tr>
+            <th>Livres</th>
+            <td>
+                <ul class="list-group">
+                    <li th:each="livre: *{livres}" class="list-group-item" >
+                        <div class="row">
+                            <div th:text="${livre.id}" class="col-2"></div>
+                            <div th:text="${livre.titre}" class="col-10"></div>
+                        </div>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<th:block th:include="/_partials/footer.html"></th:block>

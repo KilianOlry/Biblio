@@ -1,0 +1,22 @@
+<th:block th:include="/_partials/header.html"></th:block>
+
+<h1 class="text-center"> Fiche genre</h1>
+
+<table class="table">
+    <tbody  th:object="${genre}">
+        <tr>
+            <th>Id</th>
+            <td th:text="*{id}"></td>
+        </tr>
+        <tr>
+            <th>Libellé</th>
+            <td th:text="*{libelle}"></td>
+        </tr>
+        <tr>
+            <th>Mots-clés</th>
+            <td th:text="*{motsCles}"></td>
+        </tr>
+    </tbody>
+</table>
+
+<th:block th:include="/_partials/footer.html"></th:block>

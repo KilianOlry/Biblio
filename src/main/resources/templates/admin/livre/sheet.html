@@ -1,0 +1,26 @@
+<th:block th:include="/_partials/header.html"></th:block>
+
+<h1 class="text-center"> Fiche Livre</h1>
+
+<table class="table">
+    <tbody  th:object="${livre}">
+        <tr>
+            <th>Id</th>
+            <td th:text="*{id}"></td>
+        </tr>
+        <tr>
+            <th>Titre</th>
+            <td th:text="*{titre}"></td>
+        </tr>
+        <tr>
+            <th>Synopsis</th>
+            <td th:text="*{synopsis}"></td>
+        </tr>
+        <tr>
+            <th>Couverture</th>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+<th:block th:include="/_partials/footer.html"></th:block>

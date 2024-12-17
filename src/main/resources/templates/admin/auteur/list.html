@@ -1,0 +1,40 @@
+<th:block th:include="/_partials/header.html"></th:block>
+    
+<h1>Liste des auteurs
+    <a href="/admin/auteurs/ajouter" class="btn btn-primary">
+        <i class="fa fa-plus"></i> Ajouter
+    </a>
+</h1>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>
+                <i class="fa fa-cogs"></i>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Bio</th>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="auteur: ${auteurs}">
+            <td>
+                <a th:href="@{/admin/auteurs/{id}(id=${auteur.id})}">
+                    <i class="fa fa-book"></i>
+                </a>
+                <a th:href="@{/admin/auteurs/{id}/modifier(id=${auteur.id})}">
+                    <i class="fa fa-edit"></i>
+                </a>
+                <a th:href="@{/admin/auteurs/{id}/supprimer(id=${auteur.id})}">
+                    <i class="fa fa-trash"></i>
+                </a>
+            </td>
+            <td th:text="${auteur.id}"></td>
+            <td th:text="${auteur.prenom + ' ' + auteur.nom}"></td>
+            <td th:text="${auteur.bio}"></td>
+        </tr>
+    </tbody>
+</table>
+
+<th:block th:include="/_partials/footer.html"></th:block>
