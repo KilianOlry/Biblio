@@ -16,6 +16,10 @@ public class Book {
     @Column(name = "synopsis", columnDefinition = "TEXT", nullable = false)
     private String synopsis;
 
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private Author author = new Author();
+
     public Long getId() {
         return id;
     }
@@ -39,4 +43,5 @@ public class Book {
     public void setSynopsis(String synopsis) {
         this.synopsis = synopsis;
     }
+
 }
