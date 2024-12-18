@@ -10,69 +10,73 @@
         th:include="global/header.html">
 </th:block>
 
-<form class="relative flex text-gray-800 flex-col justify-center py-6 sm:py-12" method="POST">
-    <div class="relative py-3 sm:w-96 mx-auto text-center">
-        <!-- Create -->
-        <span th:if="${action == 'create'}" class="text-2xl font-light">Ajouter un livre</span>
-        <!-- Edit -->
-        <span th:unless="${action == 'create'}" class="text-2xl font-light" th:text="'Modifier ' + ${book.title}"></span>
-        <div class="mt-4 bg-white shadow-md rounded-lg text-left">
-            <div class="h-2 bg-gray-800 rounded-t-md"></div>
-            <div class="px-8 py-6 ">
-                <!-- Book Name -->
-                <div>
-                    <!-- Create -->
-                    <label class="block font-semibold" for="name">Nom du livre</label>
-                    <input class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md"
-                           th:if="${action == 'create'}"
-                           id="name"
-                           th:field="${book.title}"
-                           type="text"
-                    >
-                    <!-- Edit -->
-                    <input class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md"
-                           th:unless="${action == 'create'}"
-                           id="name"
-                           th:field="${book.title}"
-                           type="text"
-                    >
-                </div>
+<section class="min-h-[calc(100dvh-68px)] flex justify-center items-center">
+    <form class="relative flex text-gray-800 flex-col justify-center py-6 sm:py-12" method="POST">
+        <div class="relative py-3 sm:w-96 mx-auto text-center">
+            <!-- Create -->
+            <span class="text-2xl font-light" th:if="${action == 'create'}">Ajouter un livre</span>
+            <!-- Edit -->
+            <span class="text-2xl font-light" th:text="'Modifier ' + ${book.title}"
+                  th:unless="${action == 'create'}"></span>
+            <div class="mt-4 bg-white shadow-md rounded-lg text-left">
+                <div class="h-2 bg-gray-800 rounded-t-md"></div>
+                <div class="px-8 py-6 ">
+                    <!-- Book Name -->
+                    <div>
+                        <!-- Create -->
+                        <label class="block font-semibold" for="name">Nom du livre</label>
+                        <input class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md"
+                               id="name"
+                               th:field="${book.title}"
+                               th:if="${action == 'create'}"
+                               type="text"
+                        >
+                        <!-- Edit -->
+                        <input class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md"
+                               id="name"
+                               th:field="${book.title}"
+                               th:unless="${action == 'create'}"
+                               type="text"
+                        >
+                    </div>
 
-                <!-- Book Synopsis -->
-                <div>
-                    <label class="block mt-3 font-semibold" for="synopsis">Résumé du livre</label>
-                    <!-- Create -->
-                    <textarea
-                            th:if="${action == 'create'}"
-                            class="w-full border resize-none"
-                            id="synopsis"
-                            th:field="${book.synopsis}"
-                    >
+                    <!-- Book Synopsis -->
+                    <div>
+                        <label class="block mt-3 font-semibold" for="synopsis">Résumé du livre</label>
+                        <!-- Create -->
+                        <textarea
+                                class="w-full border resize-none"
+                                id="synopsis"
+                                th:field="${book.synopsis}"
+                                th:if="${action == 'create'}"
+                        >
                     </textarea>
-                    <!-- Edit -->
-                    <textarea
-                            th:unless="${action == 'create'}"
-                            class="w-full border resize-none"
-                            id="synopsis"
-                            th:field="${book.synopsis}"
-                    >
+                        <!-- Edit -->
+                        <textarea
+                                class="w-full border resize-none"
+                                id="synopsis"
+                                th:field="${book.synopsis}"
+                                th:unless="${action == 'create'}"
+                        >
                     </textarea>
-                </div>
+                    </div>
 
-                <div class="flex justify-between items-baseline">
-                    <button
-                            class="mt-4 bg-transparent border text-gray-800 py-2 px-6 rounded-md hover:bg-gray-900 hover:text-white uppercase"
-                            type="submit">reset
-                    </button>
-                    <button
-                            class="mt-4 bg-gray-800 text-white py-2 px-6 rounded-md hover:bg-gray-900 uppercase"
-                            type="submit">valider
-                    </button>
+                    <div class="flex justify-between items-baseline">
+                        <button
+                                class="mt-4 bg-transparent border text-gray-800 py-2 px-6 rounded-md hover:bg-gray-900 hover:text-white uppercase"
+                                type="submit">reset
+                        </button>
+                        <button
+                                class="mt-4 bg-gray-800 text-white py-2 px-6 rounded-md hover:bg-gray-900 uppercase"
+                                type="submit">valider
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</form>
+    </form>
+</section>
+
 </body>
 </html>
 
