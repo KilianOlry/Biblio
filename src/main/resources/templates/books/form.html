@@ -61,10 +61,23 @@
                     </textarea>
                     </div>
 
+
+                    <!-- Book Author -->
+                    <div>
+                        <label class="block mt-3 font-semibold">Auteur</label>
+                        <select id="auteur_id" class="form-control">
+                            <option value=""></option>
+                            <option th:each="auteur: ${authors}"
+                                    th:field="${auteur.first_name}"
+                                    th:value="${auteur.id}"
+                                    th:text="${auteur.first_name + ' ' + auteur.last_name}"
+                            ></option>
+                        </select>
+                    </div>
                     <div class="flex justify-between items-baseline">
                         <button
                                 class="mt-4 bg-transparent border text-gray-800 py-2 px-6 rounded-md hover:bg-gray-900 hover:text-white uppercase"
-                                type="submit">reset
+                                type="reset">reset
                         </button>
                         <button
                                 class="mt-4 bg-gray-800 text-white py-2 px-6 rounded-md hover:bg-gray-900 uppercase"
@@ -79,8 +92,3 @@
 
 </body>
 </html>
-
-
-
-
-

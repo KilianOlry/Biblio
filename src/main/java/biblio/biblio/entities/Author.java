@@ -21,8 +21,8 @@ public class Author {
     @Column(name = "last_name", length = 100, nullable = false)
     private String lastName;
 
-    @Column(name = "descritpion", columnDefinition = "TEXT", nullable = true)
-    private String descritpion;
+    @Column(name = "description", columnDefinition = "TEXT", nullable = true)
+    private String description;
 
     @OneToMany(mappedBy = "author")
     private List<Book> books;
@@ -51,11 +51,19 @@ public class Author {
         this.lastName = lastName;
     }
 
-    public String getDescritpion() {
-        return descritpion;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescritpion(String descritpion) {
-        this.descritpion = descritpion;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
     }
 }

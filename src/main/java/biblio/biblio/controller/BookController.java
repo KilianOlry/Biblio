@@ -1,7 +1,9 @@
 package biblio.biblio.controller;
 
+import biblio.biblio.entities.Author;
 import biblio.biblio.entities.Book;
 import biblio.biblio.repository.BookRepository;
+import biblio.biblio.service.AuthorService;
 import biblio.biblio.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +24,9 @@ public class BookController {
 
     @Autowired
     private BookService bookService;
+
+    @Autowired
+    private AuthorService authorService;
 
     // SELECT ALL BOOKS
     @GetMapping(path = "livres")
@@ -46,8 +51,11 @@ public class BookController {
     @GetMapping(path = "livre/ajouter")
     public String create(Model model) {
         Book book = new Book();
+        Author author = new Author();
+        List<Author> authors = authorService.selectAll();
         model.addAttribute("action", "create");
         model.addAttribute("book", book);
+        model.addAttribute("authors", authors);
         return "books/form";
     }
 
