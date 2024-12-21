@@ -11,7 +11,7 @@
 </th:block>
 
 <section class="min-h-[calc(100dvh-68px)] flex justify-center items-center">
-    <form class="relative flex text-gray-800 flex-col justify-center py-6 sm:py-12" method="POST">
+    <form class="relative flex text-gray-800 flex-col justify-center py-6 sm:py-12" method="POST" th:action="@{/livre/ajouter}">
         <div class="relative py-3 sm:w-96 mx-auto text-center">
             <!-- Create -->
             <span class="text-2xl font-light" th:if="${action == 'create'}">Ajouter un livre</span>
@@ -25,14 +25,14 @@
                     <div>
                         <!-- Create -->
                         <label class="block font-semibold" for="name">Nom du livre</label>
-                        <input class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md"
+                        <input class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-gray-900 focus:ring-1 rounded-md"
                                id="name"
                                th:field="${book.title}"
                                th:if="${action == 'create'}"
                                type="text"
                         >
                         <!-- Edit -->
-                        <input class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md"
+                        <input class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-gray-900 focus:ring-1 rounded-md"
                                id="name"
                                th:field="${book.title}"
                                th:unless="${action == 'create'}"
@@ -45,7 +45,7 @@
                         <label class="block mt-3 font-semibold" for="synopsis">Résumé du livre</label>
                         <!-- Create -->
                         <textarea
-                                class="w-full border resize-none"
+                                class="w-full border resize-none border px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-gray-900 focus:ring-1 rounded-md"
                                 id="synopsis"
                                 th:field="${book.synopsis}"
                                 th:if="${action == 'create'}"
@@ -64,13 +64,12 @@
 
                     <!-- Book Author -->
                     <div>
-                        <label class="block mt-3 font-semibold">Auteur</label>
-                        <select id="auteur_id" class="form-control">
+                        <label class="block mt-3 font-semibold">Auteur du livre</label>
+                        <select class="select select-bordered w-full max-w-xs" id="auteur_id" th:field="${book.author}">
                             <option value=""></option>
                             <option th:each="auteur: ${authors}"
-                                    th:field="${auteur.first_name}"
                                     th:value="${auteur.id}"
-                                    th:text="${auteur.first_name + ' ' + auteur.last_name}"
+                                    th:text="${auteur.firstName + ' ' + auteur.lastName}"
                             ></option>
                         </select>
                     </div>

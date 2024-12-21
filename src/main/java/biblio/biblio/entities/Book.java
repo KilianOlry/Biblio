@@ -19,7 +19,7 @@ public class Book {
 
     @ManyToOne
     @JoinColumn(nullable = false)
-    private Author author = new Author();
+    private Author author;
 
     public Long getId() {
         return id;

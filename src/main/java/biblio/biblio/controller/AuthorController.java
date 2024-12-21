@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -25,4 +28,9 @@ public class AuthorController {
         model.addAttribute("authors", authors);
         return "authors/authors";
     }
+
+/*    @PostMapping(path = "/auteurs/create")
+    public ModelAndView create(@ModelAttribute("author") Author author) {
+        Author auhtor = new Author();
+    }*/
 }

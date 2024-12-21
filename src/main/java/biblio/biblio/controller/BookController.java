@@ -8,10 +8,7 @@ import biblio.biblio.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -49,18 +46,15 @@ public class BookController {
 
     // CREATE BOOK
     @GetMapping(path = "livre/ajouter")
-    public String create(Model model) {
-        Book book = new Book();
-        Author author = new Author();
-        List<Author> authors = authorService.selectAll();
+    public String showPage(Model model) {
         model.addAttribute("action", "create");
-        model.addAttribute("book", book);
-        model.addAttribute("authors", authors);
+        model.addAttribute("book", new Book());
+        model.addAttribute("authors", authorService.selectAll());
         return "books/form";
     }
 
     @PostMapping(path = "livre/ajouter")
-    public ModelAndView add(@ModelAttribute Book book) {
+    public ModelAndView create (@ModelAttribute Book book) {
         bookService.save(book);
         return new ModelAndView("redirect:/livres");
     }
