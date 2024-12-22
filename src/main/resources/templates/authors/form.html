@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="https://thymeleaf.org">
+
+<th:block
+        th:include="global/head.html">
+</th:block>
+
+<body>
+<th:block
+        th:include="global/header.html">
+</th:block>
+
+<section class="min-h-[calc(100dvh-68px)] flex justify-center items-center">
+    <form class="relative flex text-gray-800 flex-col justify-center py-6 sm:py-12" method="POST" th:action="@{/auteur/ajouter}">
+        <div class="relative py-3 sm:w-96 mx-auto text-center">
+            <span class="text-2xl font-light">Ajouter un auteur</span>
+            <div class="mt-4 bg-white shadow-md rounded-lg text-left">
+                <div class="h-2 bg-gray-800 rounded-t-md"></div>
+                <div class="px-8 py-6 ">
+                    <div>
+                        <!-- Create -->
+                        <label class="block font-semibold" for="firstName">Prénom de l'auteur</label>
+                        <input class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-gray-900 focus:ring-1 rounded-md"
+                               th:field="${author.firstName}"
+                               id="firstName"
+                               type="text"
+                        >
+                    </div>
+                    </div>
+
+                <div class="px-8 py-6 ">
+                    <div>
+                        <label class="block font-semibold" for="lastName">Prénom de l'auteur</label>
+                        <input class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-gray-900 focus:ring-1 rounded-md"
+                               th:field="${author.lastName}"
+                               id="lastName"
+                               type="text"
+                        >
+                    </div>
+                </div>
+
+                <div class="px-8 py-6 ">
+                    <div>
+                        <label class="block font-semibold" for="description">Description de l'auteur</label>
+                        <textarea
+                                class="w-full border resize-none border px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-gray-900 focus:ring-1 rounded-md"
+                                id="description"
+                                th:field="${author.description}"
+                        >
+                    </textarea>
+                    </div>
+                </div>
+
+                    <div class="flex justify-between items-baseline">
+                        <button
+                                class="mt-4 bg-transparent border text-gray-800 py-2 px-6 rounded-md hover:bg-gray-900 hover:text-white uppercase"
+                                type="reset">reset
+                        </button>
+                        <button
+                                class="mt-4 bg-gray-800 text-white py-2 px-6 rounded-md hover:bg-gray-900 uppercase"
+                                type="submit">valider
+                        </button>
+                    </div>
+                </div>
+            </div>
+    </form>
+</section>
+
+</body>
+</html>

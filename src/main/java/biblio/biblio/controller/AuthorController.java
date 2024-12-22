@@ -29,8 +29,16 @@ public class AuthorController {
         return "authors/authors";
     }
 
-/*    @PostMapping(path = "/auteurs/create")
-    public ModelAndView create(@ModelAttribute("author") Author author) {
-        Author auhtor = new Author();
-    }*/
+    // CREATE
+    @GetMapping(path = "/auteur/ajouter")
+    public String showPage(Model model) {
+        model.addAttribute("author", new Author());
+        return "/authors/form";
+    }
+
+    @PostMapping(path = "/auteur/ajouter")
+    public ModelAndView ajouterAuthor(@ModelAttribute Author author) {
+        authorService.save(author);
+        return new ModelAndView("redirect:/auteurs");
+    }
 }

@@ -37,8 +37,10 @@ public class BookController {
     @GetMapping(path = "livre/{id}")
     public String book(@PathVariable Long id, Model model) {
         Book book = bookService.selectById(id);
+        Author author = authorService.selectById(book.getAuthor().getId());
         if (book != null) {
-            model.addAttribute("book", bookService.selectById(id));
+            model.addAttribute("book", book);
+            model.addAttribute("author", author);
             return "books/book";
         }
         return "redirect:/livres";

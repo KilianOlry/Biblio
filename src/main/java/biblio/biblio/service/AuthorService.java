@@ -22,4 +22,7 @@ public class AuthorService {
         return author.orElse(null);
     }
 
+    public Author save(Author author) {
+        return authorRepository.save(author);
+    }
 }
